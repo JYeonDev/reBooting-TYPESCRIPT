@@ -23,11 +23,21 @@
 	type LoginState = SuccessState | FailState;
 	function login(): LoginState {
 		return {
-			body: 'logged in!',
+			response: {
+        body: 'logged in!',
+      }
 		}
 	}
 	
 	// printLoginState(state)
 	// success => 성공! body
 	// fail => 실패! reason
+
+  function printLoginState(state: LoginState) {
+    if('response' in state) {
+      console.log(`nice ${state.response.body}`)
+    } else {
+      console.log(`nice ${state.reason}`)
+    }
+  }
 }
